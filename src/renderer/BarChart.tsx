@@ -23,7 +23,15 @@ interface BarProps {
   value: number;
 }
 
-const Bar: React.FC<BarProps> = ({ fill = '#000', x, y, height, width, date, value }) => (
+const Bar: React.FC<BarProps> = ({
+  fill = '#000',
+  x,
+  y,
+  height,
+  width,
+  date,
+  value,
+}) => (
   <rect
     className="bar"
     fill={fill}
@@ -33,7 +41,9 @@ const Bar: React.FC<BarProps> = ({ fill = '#000', x, y, height, width, date, val
     width={width}
     data-html="true"
   >
-    <title>{`Date: ${date}`}&#10;{`Value: ${value}`}</title>
+    <title>
+      {`Date: ${date}`}&#10;{`Value: ${value}`}
+    </title>
   </rect>
 );
 
@@ -85,8 +95,8 @@ const BarChart: React.FC<BarChartProps> = ({ data }) => {
   const tickValues = Array.from({ length: numTicks }, (_, i) =>
     Math.abs(min + (i * (Math.abs(maxTick) - min)) / (numTicks - 1))
   );
-  const scaledTickPositions = tickValues.map((tick) =>
-    chartHeight - (Math.abs(tick) / maxTick) * chartHeight
+  const scaledTickPositions = tickValues.map(
+    (tick) => chartHeight - (Math.abs(tick) / maxTick) * chartHeight
   );
 
   useEffect(() => {
@@ -104,10 +114,9 @@ const BarChart: React.FC<BarChartProps> = ({ data }) => {
     };
   }, [max]);
 
-  console.log(chartHeight);
   return (
     <div className="bar-chart">
-      <Chart height={chartHeight + topMargin} width={chartWidth} >
+      <Chart height={chartHeight + topMargin} width={chartWidth}>
         {scaledTickPositions.map((tick, index) => (
           <g key={index}>
             <line
@@ -134,11 +143,11 @@ const BarChart: React.FC<BarChartProps> = ({ data }) => {
         {data.map((datum, index) => (
           <Bar
             key={datum.date}
-            fill={datum.value > 0 ? "rgb(100,149,237)" : "rgb(255,0,0)"}
-            x={(index * barWidth) + chartLeftMargin}
-            y={chartHeight - ((Math.abs(datum.value / maxTick)) * chartHeight)}
+            fill={datum.value > 0 ? 'rgb(100,149,237)' : 'rgb(255,0,0)'}
+            x={index * barWidth + chartLeftMargin}
+            y={chartHeight - Math.abs(datum.value / maxTick) * chartHeight}
             width={barWidth}
-            height={((Math.abs(datum.value) / maxTick) * chartHeight)}
+            height={(Math.abs(datum.value) / maxTick) * chartHeight}
             date={datum.date}
             value={datum.value}
           />
