@@ -1,0 +1,72 @@
+.histogram {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-height: 80vh;
+    /* margin-top: 20px; */
+  }
+  
+  .bar {
+    /* width: 30px; */
+    /* margin: 0 5px; */
+    background-color: #007bff;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    text-align: center;
+    color: white;
+  }
+
+.bar-chart {
+    max-width: 1000;
+}
+
+.App {
+    /* display: flex; */
+    background-color: rgba(52,53,65);
+    color: #d1d5db;
+    height: 100vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.date-picker-forms {
+    display: inline-flex;
+    padding: 24px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.date-picker {
+    border-radius: 16px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+}
+.form-item {
+    flex-direction: row;
+    margin: 2px;
+}
+
+.header {
+    text-align: center;
+    margin: 0px 0px 20px 0px;
+    font-size: 1.3333333em;
+    line-height: 1.5;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.dropdown {
+    border-radius: 12px;
+}
+
+.error {
+    color: #ff0000;
+}
+.bar:hover {
+    fill: #074588; /* Change the fill color when hovered */
+    cursor: pointer
+}
