@@ -30,12 +30,12 @@ const HistogramOptions: React.FC<HistogramOptionsProps> = ({
   const transformRef = useRef<HTMLSelectElement | null>(null);
 
   const samplingDropdown = ['monthly', 'quarterly', 'annual'];
-  const transformDropdown = [
-    { none: 'none' },
-    { 'row on row change': 'diff' },
-    { 'row on row % change': 'rdiff' },
-    { cumulative: 'cumul' },
-    { normalize: 'normalize' },
+  const transformDropdown: Array<{ label: string; value: string }> = [
+    { label: 'none', value: 'none' },
+    { label: 'row on row change', value: 'diff' },
+    { label: 'row on row % change', value: 'rdiff' },
+    { label: 'cumulative', value: 'cumul' },
+    { label: 'normalize', value: 'normalize' },
   ];
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -107,10 +107,9 @@ const HistogramOptions: React.FC<HistogramOptionsProps> = ({
             <label>Transform </label>
             <select ref={transformRef} className="dropdown">
               {transformDropdown.map((el, idx) => {
-                const label = Object.keys(el)[0];
                 return (
-                  <option value={el[label]} key={idx}>
-                    {label}
+                  <option value={el.value} key={idx}>
+                    {el.label}
                   </option>
                 );
               })}

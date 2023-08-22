@@ -3,12 +3,9 @@
     justify-content: center;
     align-items: center;
     max-height: 80vh;
-    /* margin-top: 20px; */
   }
   
   .bar {
-    /* width: 30px; */
-    /* margin: 0 5px; */
     background-color: #007bff;
     display: flex;
     justify-content: center;
@@ -22,7 +19,6 @@
 }
 
 .App {
-    /* display: flex; */
     background-color: rgba(52,53,65);
     color: #d1d5db;
     height: 100vh;
@@ -67,6 +63,6 @@
     color: #ff0000;
 }
 .bar:hover {
-    fill: #074588; /* Change the fill color when hovered */
+    fill: #074588; 
     cursor: pointer
 }

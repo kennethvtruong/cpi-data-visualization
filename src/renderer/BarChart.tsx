@@ -52,11 +52,11 @@ function debounce<T extends (...args: any[]) => any>(
   delay: number
 ): (...args: Parameters<T>) => void {
   let timer: ReturnType<typeof setTimeout>;
+
   return (...args: Parameters<T>): void => {
-    const context = this;
     clearTimeout(timer);
     timer = setTimeout(() => {
-      func.apply(context, args);
+      func(...args);
     }, delay);
   };
 }
@@ -89,7 +89,6 @@ const BarChart: React.FC<BarChartProps> = ({ data }) => {
 
   const barWidth = (chartWidth - chartLeftMargin - 1) / data.length;
 
-  // Define tick values for the y-axis (1.25x)
   const numTicks = 5;
   const maxTick = max * 1.25;
   const tickValues = Array.from({ length: numTicks }, (_, i) =>
@@ -103,16 +102,14 @@ const BarChart: React.FC<BarChartProps> = ({ data }) => {
     const handleResize = debounce(() => {
       setChartWidth(window.innerWidth * 0.9);
       setChartHeight(Math.min(window.innerHeight * 0.4) - bottomMargin);
-    }, 300); // Adjust the delay as needed
+    }, 300); 
 
-    // Add event listener for window resize
     window.addEventListener('resize', handleResize);
 
-    // Remove event listener on component unmount
     return () => {
       window.removeEventListener('resize', handleResize);
     };
-  }, [max]);
+  }, []);
 
   return (
     <div className="bar-chart">
@@ -123,7 +120,7 @@ const BarChart: React.FC<BarChartProps> = ({ data }) => {
               x1={chartLeftMargin}
               y1={tick + topMargin}
               x2={chartWidth}
-              y2={tick}
+              y2={tick + topMargin}
               stroke="#ccc"
             />
             <text

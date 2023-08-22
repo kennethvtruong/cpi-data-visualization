@@ -43,9 +43,9 @@ const Histogram: React.FC<HistogramProps> = ({ params, data, setData }) => {
   };
 
   useEffect(() => {
-    if (isMounted.current) fetchData();
+    if (isMounted.current)  fetchData();
     else isMounted.current = true;
-  }, [params, fetchData]);
+  }, [params]);
 
   const calculateFrequency = () => {
     const frequency: Array<{ date: string; value: number }> = [];
@@ -60,7 +60,7 @@ const Histogram: React.FC<HistogramProps> = ({ params, data, setData }) => {
 
   return (
     <div className="histogram">
-      {data.length > 0 ? <BarChart data={calculateFrequency(data)} /> : <></>}
+      {data.length > 0 ? <BarChart data={calculateFrequency()} /> : <></>}
     </div>
   );
 };
