@@ -19,9 +19,9 @@ const Histogram: React.FC<HistogramProps> = ({ params, data, setData }) => {
   const isMounted = useRef(false);
   const fetchData = async () => {
     try {
-      const queryString = `?collapse=${params.frequency}&start_date=${params.startDate}&end_date=${params.endDate}&transform=${params.transform}&order=asc`;
+      const queryString = `?collapse=${params.frequency}&start_date=${params.startDate}&end_date=${params.endDate}&transform=${params.transform}&order=asc`
       const response = await fetch(
-        `https://data.nasdaq.com/api/v3/datasets/RATEINF/CPI_USA.csv${queryString}&api_key=GjnzxkK7m5ybzh12gzx7`
+        `http://localhost:3000/api/v3/datasets/RATEINF/CPI_USA.csv${queryString}&api_key=GjnzxkK7m5ybzh12gzx7`, 
       );
       const responseStr = await response.text();
       const responseData = responseStr

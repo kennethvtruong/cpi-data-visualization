@@ -78,11 +78,10 @@ const createWindow = async () => {
       preload: app.isPackaged
         ? path.join(__dirname, 'preload.js')
         : path.join(__dirname, '../../.erb/dll/preload.js'),
-      webSecurity: false,
     },
   });
 
-  mainWindow.loadURL(resolveHtmlPath('index.html'));
+  mainWindow.loadURL('http://localhost:1212/');
 
   mainWindow.on('ready-to-show', () => {
     if (!mainWindow) {
